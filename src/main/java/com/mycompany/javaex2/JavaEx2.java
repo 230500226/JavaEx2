@@ -8,19 +8,38 @@ package com.mycompany.javaex2;
  *
  * @author ldxt460s
  */
+import java.util.Scanner;
 public class JavaEx2 {
 
     public static void main(String[] args) {
-        //Create an instance of GradeBook
-        GradeBook myGradeBook = new GradeBook("Java Programming", "Mr. Smith");
+        Scanner scanner = new Scanner(System.in);
 
-        //Set the course instructor
-        myGradeBook.setCourseInstructor("Mr. Mataifa");
+        System.out.println("Please choose an option:");
+        System.out.println("1. Access Account");
+        System.out.println("2. Access GradeBook");
 
-        //Get the course instructor
-        System.out.printf("The course instructor is: %s\n", myGradeBook.getCourseInstructor());
+        int choice = scanner.nextInt();
 
-        //Display the welcome message
-        myGradeBook.displayMessage("Software design - Java Programming");
+        switch (choice) {
+            case 1:
+                // Access Account
+                Account myAccount = new Account(100.00);
+                myAccount.displayBalance();
+                myAccount.debit(50.00);
+                myAccount.displayBalance();
+                myAccount.debit(60.00);
+                myAccount.displayBalance();
+                break;
+            case 2:
+                // Access GradeBook
+                GradeBook myGradeBook = new GradeBook("Software Design - Java Development", "Prof. Mataifa");
+                myGradeBook.displayMessage("Software Design - Java Development");
+                break;
+            default:
+                System.out.println("Invalid choice.");
+                break;
+        }
+
+        scanner.close();
     }
 }
